@@ -19,6 +19,7 @@ class CreatePostsTable extends Migration
             $table->string('content');
             $table->foreignIdFor(App\Models\User::class);
             $table->boolean('allow_comment')->default(true);
+            $table->softDeletes();
             $table->timestamps();
         });
     }
