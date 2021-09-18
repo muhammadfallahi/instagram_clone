@@ -17,11 +17,12 @@
       <h1>Login to access to<br />your account</h1>
   
       <div class="auth-form">
-        <form action="" method="POST">
-          <x-show_error/>
-          <x-show_message/>
+        <form action="{{ route('auth.login')}}" method="POST">
+           <x-show_error/>  {{-- component for input errors --}}
+          <x-show_message/> {{-- component for message successfull registration --}}
+          <x-show_alert/>   {{-- component for invalid input --}}
           @csrf
-          <input type="email" placeholder="E-mail Address" name="email">
+          <input type="text" placeholder="username" name="username">
           <input type="password" placeholder="Password" name="password">
 
 

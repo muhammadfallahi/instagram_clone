@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Register as RequestsRegister;
+use App\Http\Requests\loginRequest;
+use App\Http\Requests\RegisterRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
@@ -15,12 +17,23 @@ class AuthController extends Controller
     }
 
 
+    public function login(loginRequest $request){
+
+        if (Auth::attempt($request->validated())) 
+            return redirect()->route('home');
+
+         return back()
+         ->with('alert', 'incorrect username or password');
+     
+    }
+
+
     public function showRegister(){
 
         return view('auth.register');
     }
 
-    public function register(RequestsRegister $request){
+    public function register(RegisterRequest $request){
 
 
         User::create($request->validated());

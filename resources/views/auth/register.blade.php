@@ -15,7 +15,7 @@
   
       <div class="auth-form">
         <form action="{{ route('auth.register')}}" method="POST">
-          <x-show_error/>
+          <x-show_error/>  {{-- component for errors --}}
           @csrf
           <input type="text" placeholder="Name" name="name">
           <input type="text" placeholder="Username" name="username">
