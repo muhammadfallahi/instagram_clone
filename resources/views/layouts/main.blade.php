@@ -25,8 +25,29 @@
         </div>
       </div>
     </nav>
+    
 <div class="container mt-5">
     <div class="row">
+      {{-- -------------show errors------------------ --}}
+      @if ($errors->any()) 
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+{{-- ----------------------------------------- --}}
+
+{{-- use message for successful and alert for mistake event --}}
+@if(session('message'))
+<div class="alert alert-success" role="alert">{{ session('message') }}</div>
+@elseif(session('alert'))
+<div class="alert alert-danger" role="alert">{{ session('alert') }}</div>
+@endif
+
+{{-- ------------------------------------------------------------ --}}
         @yield('content')
     </div>
 </div>
