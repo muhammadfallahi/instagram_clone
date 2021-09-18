@@ -2,6 +2,7 @@
 @section('title', 'register')
 @section('content')
 
+
 <link rel="stylesheet" href={{ asset('css/login.css') }}>
 
 <div class="parent clearfix">
@@ -13,14 +14,15 @@
       <h1>Register</h1>
   
       <div class="auth-form">
-        <form action="" method="POST">
+        <form action="{{ route('auth.register')}}" method="POST">
+          <x-show_error/>
           @csrf
           <input type="text" placeholder="Name" name="name">
           <input type="text" placeholder="Username" name="username">
           <input type="email" placeholder="E-mail Address" name="email">
           <input type="tel" placeholder="phone number" name="phone_number">
           <input type="password" placeholder="Password" name="password">
-          <input type="password" placeholder="repeat Password" name="password_confirmation">
+          <input type="password" placeholder="repeat Password" id="password_confirmation" name="password_confirmation">
 
 
 

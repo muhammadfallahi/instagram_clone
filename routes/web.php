@@ -21,6 +21,12 @@ Route::get('/', function () {
 
 Route::resource('user', UserController::class);
 
-Route::get('login',[AuthController::class, 'showLogin']);
-Route::get('register',[AuthController::class, 'showRegister']);
+Route::get('login',[AuthController::class, 'showLogin'])
+->name('auth.showLogin');
+
+Route::get('register',[AuthController::class, 'showRegister'])
+->name('auth.showRegister');
+
+Route::post('register',[AuthController::class, 'register'])
+->name('auth.register');
 

@@ -18,6 +18,8 @@
   
       <div class="auth-form">
         <form action="" method="POST">
+          <x-show_error/>
+          <x-show_message/>
           @csrf
           <input type="email" placeholder="E-mail Address" name="email">
           <input type="password" placeholder="Password" name="password">
