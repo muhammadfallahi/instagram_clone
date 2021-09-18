@@ -20,7 +20,7 @@ class AuthController extends Controller
     public function login(loginRequest $request){
 
         if (Auth::attempt($request->validated())) 
-            return redirect()->route('home');
+            return redirect()->route('user.index');
 
          return back()
          ->with('alert', 'incorrect username or password');

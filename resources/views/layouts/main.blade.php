@@ -7,10 +7,12 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 
+    <link rel="stylesheet" href={{ asset('css/navbar.css') }}>
+
     <title>@yield('title')</title>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    {{-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">Navbar</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -24,7 +26,23 @@
           </ul>
         </div>
       </div>
-    </nav>
+    </nav> --}}
+    <nav class="navbar">
+      <div class="nav-wrapper">
+        <a href="{{ route('auth.register') }}">
+          <img src="{{ asset('images/instagram_clone.png') }}" class="brand-img" alt="">
+        </a>
+          <input type="text" class="search-box" placeholder="search">
+          <div class="nav-items">
+            <a href="{{ route('user.show', [Auth::user()]) }}"><img src="{{ asset('images/home.png') }}" class="icon" alt=""></a>
+            <a href="{{ route('auth.register') }}"><img src="{{ asset('images/home.png') }}" class="icon" alt=""></a>
+            <a href="{{ route('auth.register') }}"><img src="{{ asset('images/home.png') }}" class="icon" alt=""></a>
+            <a href="{{ route('auth.register') }}"><img src="{{ asset('images/home.png') }}" class="icon" alt=""></a>
+            <a href="{{ route('auth.register') }}"><img src="{{ asset('images/home.png') }}" class="icon" alt=""></a>
+              <div class="icon user-profile"></div>
+          </div>
+      </div>
+  </nav>
     
 <div class="container mt-5">
     <div class="row">

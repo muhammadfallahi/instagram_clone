@@ -15,11 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
-
-Route::resource('user', UserController::class);
+// Route::get('/', function () {
+//     return view('welcome');
+// })->name('home');
 
 Route::get('login',[AuthController::class, 'showLogin'])
 ->name('auth.showLogin');
@@ -33,4 +31,10 @@ Route::get('register',[AuthController::class, 'showRegister'])
 
 Route::post('register',[AuthController::class, 'register'])
 ->name('auth.register');
+
+Route::middleware('auth')->group(function(){
+
+Route::resource('user', UserController::class);
+
+});
 
