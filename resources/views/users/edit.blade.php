@@ -3,6 +3,16 @@
 @section('content')
   
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="col-12 col-lg-auto mb-3" style="width: 200px;">
+  <div class="card p-3" style="position: inherit">
+    <div class="mb-2"><b>Block User</b></div>
+    <div class="e-navlist e-navlist--active-bg">
+      <ul class="nav">
+        <li class="nav-item"><a class="nav-link px-2 active" href="#"><i class="fa fa-fw fa-bar-chart mr-1"></i><span>Overview</span></a></li>
+      </ul>
+    </div>
+  </div>
+</div>
   <div class="col">
     <div class="row">
       <div class="col mb-3">
@@ -29,7 +39,6 @@
                     </div>
                   </div>
                   <div class="text-center text-sm-right">
-                    <span class="badge badge-secondary">administrator</span>
                     <div class="text-muted"><small>Join {{$user->created_at}}</small></div>
                   </div>
                 </div>
