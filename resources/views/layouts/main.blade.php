@@ -29,7 +29,7 @@
     </nav> --}}
     <nav class="navbar">
       <div class="nav-wrapper">
-        <a href="{{ route('auth.register') }}">
+        <a href="{{ route('user.index') }}">
           <img src="{{ asset('images/instagram_clone.png') }}" class="brand-img" alt="">
         </a>
           <input type="text" class="search-box" placeholder="search">

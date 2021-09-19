@@ -1,3 +1,8 @@
+<style>
+      .alert{
+    position: inherit !important;
+}
+</style>
 <div>
  
 @if(session('alert'))

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpdateRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -67,9 +68,21 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(UpdateRequest $request, User $user)
     {
-        //
+        
+        $newrequest = $request->validated();
+        if(!$request->password)
+             $newrequest['password'] = $request->current_password;
+
+        if (!array_key_exists('public',$newrequest)) {
+            $newrequest['public'] = false;
+        }
+
+
+        
+        $user->update($newrequest);
+        return redirect()->route('user.index')->with('message', 'update successfull');
     }
 
     /**
