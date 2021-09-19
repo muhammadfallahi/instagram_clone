@@ -56,4 +56,9 @@ class User extends Authenticatable
     public function setPasswordAttribute($value) {
         $this->attributes['password'] = Hash::make($value);
     }
+
+    public function images(){
+
+        return $this->morphMany(Image::class, 'imageable');
+    }
 }

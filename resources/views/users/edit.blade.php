@@ -22,8 +22,12 @@
               <div class="row">
                 <div class="col-12 col-sm-auto mb-3">
                   <div class="mx-auto" style="width: 140px;">
-                    <div class="d-flex justify-content-center align-items-center rounded" style="height: 140px; background-color: rgb(233, 236, 239);">
-                      <span style="color: rgb(166, 168, 170); font: bold 8pt Arial;">140x140</span>
+                    <div class="d-flex justify-content-center align-items-center rounded" {{-- style="height: 140px; background-color: rgb(233, 236, 239);"--}}>
+                      {{-- <span style="color: rgb(166, 168, 170); font: bold 8pt Arial;">140x140</span> --}}
+                      {{-- @foreach ($user->images as $image) --}}
+                      
+                      <img src="{{ asset($user->images->last()->path) }}" width="140" height="140" alt="n">
+                      {{-- @endforeach --}}
                     </div>
                   </div>
                 </div>
@@ -32,10 +36,7 @@
                     <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap">{{$user->name}}</h4>
                     <p class="mb-0">@ {{$user->username}}</p>
                     <div class="mt-2">
-                      <button class="btn btn-primary" type="button">
-                        <i class="fa fa-fw fa-camera"></i>
-                        <span>Change Photo</span>
-                      </button>
+                      <label for="file"><i class="fa fa-camera btn btn-primary"> Change Photo</i></label>
                     </div>
                   </div>
                   <div class="text-center text-sm-right">
@@ -48,9 +49,10 @@
               </ul>
               <div class="tab-content pt-3">
                 <div class="tab-pane active">
-                  <form class="form"  method="post" action="{{ route('user.update', [Auth::user()]) }}">
+                  <form class="form"  method="post" action="{{ route('user.update', [Auth::user()]) }}" enctype="multipart/form-data">
                     @method('PATCH')
                     @csrf
+                    <input type="file" style="display: none" name="file" id="file">
                     <div class="row">
                       <div class="col">
                         <div class="row">

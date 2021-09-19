@@ -30,6 +30,7 @@ class UpdateRequest extends FormRequest
             'website' => ['nullable'],
             'bio' => ['nullable'],
             'public'=> [],
+            'file' => ['image'],
             'email' => ['required','unique:users,email,' . Auth::user()->id],
             'phone_number' => ['required', 'unique:users,phone_number,'. Auth::user()->id,'min:11','max:11'],
             'current_password' => ['current_password'],
