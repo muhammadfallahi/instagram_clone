@@ -17,7 +17,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('users.home');
+        $users = User::all();
+        return view('users.home',compact('users'));
     }
 
     /**
@@ -88,7 +89,7 @@ class UserController extends Controller
         if(!$request->password)
              $newrequest['password'] = $request->current_password;
 
-        if (!array_key_exists('public',$newrequest)) {  //if private checkbox is not check public key dosnt exist
+        if (!array_key_exists('public',$newrequest)) {  //if private checkbox is not check public key dosen't exist
             $newrequest['public'] = false;
         }
 

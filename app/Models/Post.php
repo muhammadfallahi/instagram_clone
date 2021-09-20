@@ -11,7 +11,7 @@ class Post extends Model
 
 
     protected $fillable = [
-        'title', 'content', 'allow_comment'
+        'title', 'content', 'allow_comment', 'user_id'
     ];
 
 
@@ -21,6 +21,11 @@ class Post extends Model
 
     public function comments(){
         return $this->hasMany(Comment::class);
+    }
+
+    public function images(){
+
+        return $this->morphMany(Image::class, 'imageable');
     }
 }
 

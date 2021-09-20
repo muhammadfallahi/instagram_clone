@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\FollowController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,6 +21,11 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // })->name('home');
 
+
+
+Route::get('/',[AuthController::class, 'showLogin'])
+->name('auth.showLogin');
+
 Route::get('login',[AuthController::class, 'showLogin'])
 ->name('auth.showLogin');
 
@@ -35,6 +42,11 @@ Route::post('register',[AuthController::class, 'register'])
 Route::middleware('auth')->group(function(){
 
 Route::resource('user', UserController::class);
+
+Route::resource('post', PostController::class);
+
+Route::post('follow',[FollowController::class, 'follow'])
+->name('follow.make');
 
 });
 

@@ -37,7 +37,7 @@
             <a href="{{ route('user.index') }}"><img src="{{ asset('images/home.png') }}" class="icon" alt=""></a>
             <a href="{{ route('user.show', [Auth::user()]) }}"><img src="{{ asset('images/profile.png') }}" class="icon" alt=""></a>
             <a href="{{ route('user.edit', [Auth::user()]) }}"><img src="{{ asset('images/setting.png') }}" class="icon" alt=""></a>
-            <a href="{{ route('auth.register') }}"><img src="{{ asset('images/home.png') }}" class="icon" alt=""></a>
+            <a href="{{ route('post.create') }}"><img src="{{ asset('images/post.png') }}" class="icon" alt=""></a>
             <a href="{{ route('auth.register') }}"><img src="{{ asset('images/home.png') }}" class="icon" alt=""></a>
               <div class="icon user-profile"></div>
           </div>
