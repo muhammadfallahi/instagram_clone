@@ -67,7 +67,7 @@ class PostController extends Controller
             ]);
         }
 
-
+        return redirect()->route('user.index')->with('message','post created successfully');
     
     }
 
