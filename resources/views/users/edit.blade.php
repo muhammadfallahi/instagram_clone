@@ -7,12 +7,18 @@
   <div class="card p-3" style="position: inherit">
     <div class="mb-2"><b>Block User</b></div>
     <div class="e-navlist e-navlist--active-bg">
-      <ul class="nav">
-        @foreach ($user->blocks as $block)
-            {{$block->name}} <br>
+      
+        
+        @foreach ($user->blocks as $block)       {{-- Show block users  --}}
+            {{$block->name}}
+            <form action="{{ route('block.delete') }}" method="POST"> 
+              @method('DELETE')
+              @csrf
+              <button type="submit" class="btn-primary">unblock</button>
+              <input type="hidden" value="{{$block->id}}" name="blocked"><br><br>
+          </form>
         @endforeach
-        {{-- {{DB::table('block')->where('user_id', "$user->id")->get() }} --}}
-      </ul>
+      
     </div>
   </div>
 </div>
