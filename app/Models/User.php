@@ -69,4 +69,8 @@ class User extends Authenticatable
     public function follows(){
         return $this->belongsToMany(User::class, 'follow','user_id','follow');
     }
+
+    public function blocks(){
+        return $this->belongsToMany(User::class, 'block','user_id','block');
+    }
 }

@@ -8,7 +8,10 @@
     <div class="mb-2"><b>Block User</b></div>
     <div class="e-navlist e-navlist--active-bg">
       <ul class="nav">
-        <li class="nav-item"><a class="nav-link px-2 active" href="#"><i class="fa fa-fw fa-bar-chart mr-1"></i><span>Overview</span></a></li>
+        @foreach ($user->blocks as $block)
+            {{$block->name}} <br>
+        @endforeach
+        {{-- {{DB::table('block')->where('user_id', "$user->id")->get() }} --}}
       </ul>
     </div>
   </div>

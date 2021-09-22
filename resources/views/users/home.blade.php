@@ -15,6 +15,30 @@
     @endforeach
 
     @foreach ($users as $user)
+        {{$user->name}}  <form action="{{ route('block.make') }}" method="POST"> 
+            
+            @csrf
+
+            <button type="submit" class="btn-primary">block</button>
+            <input type="hidden" value="{{$user->id}}" name="blocked">
+
+        
+        </form><br>
+    @endforeach
+
+    @foreach ($users as $user)
+    {{$user->name}}  <form action="{{ route('block.delete') }}" method="POST"> 
+        @method('DELETE')
+        @csrf
+
+        <button type="submit" class="btn-primary">unblock</button>
+        <input type="hidden" value="{{$user->id}}" name="blocked">
+
+    
+    </form><br>
+@endforeach
+
+    @foreach ($users as $user)
         {{$user->name}}  <form action="{{ route('follow.delete') }}" method="POST"> 
             @method('DELETE')
             @csrf

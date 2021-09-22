@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BlockController;
 use App\Http\Controllers\FollowController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
@@ -50,6 +51,12 @@ Route::post('follow',[FollowController::class, 'follow'])
 
 Route::delete('follow',[FollowController::class, 'unfollow'])
 ->name('follow.delete');
+
+Route::post('block',[BlockController::class, 'block'])
+->name('block.make');
+
+Route::delete('block',[BlockController::class, 'unblock'])
+->name('block.delete');
 
 });
 
