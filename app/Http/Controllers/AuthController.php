@@ -42,4 +42,11 @@ class AuthController extends Controller
                ->with('message', 'register successfully! please login for access the account');
     }
 
+    public function logout(){
+
+        Auth::logout();
+ 
+        return redirect()->route('auth.showLogin');
+     }
+
 }

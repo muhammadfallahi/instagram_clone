@@ -42,6 +42,9 @@ Route::post('register',[AuthController::class, 'register'])
 
 Route::middleware('auth')->group(function(){
 
+    Route::post('logout', [AuthController::class, 'logout'])
+->name('auth.logout');
+
 Route::resource('user', UserController::class);
 
 Route::resource('post', PostController::class);
