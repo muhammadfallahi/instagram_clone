@@ -24,6 +24,7 @@
           @csrf
           <input type="text" placeholder="username" name="username">
           <input type="password" placeholder="Password" name="password">
+          <a href="{{ route('auth.register')}}">not yet registering</a>
 
 
           <button type="submit">LOG-IN</button>

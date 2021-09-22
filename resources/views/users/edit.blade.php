@@ -25,8 +25,11 @@
                     <div class="d-flex justify-content-center align-items-center rounded" {{-- style="height: 140px; background-color: rgb(233, 236, 239);"--}}>
                       {{-- <span style="color: rgb(166, 168, 170); font: bold 8pt Arial;">140x140</span> --}}
                       {{-- @foreach ($user->images as $image) --}}
-                      
-                      <img src="{{ asset($user->images->last()->path) }}" width="140" height="140" alt="n">
+                      @php
+                          $path = $user->images->last()->path ?? null;
+                          $newpath = str_replace("public", "storage", "$path");
+                      @endphp
+                      <img src="{{ asset($newpath) }}" width="140" height="140" alt="n">
                       {{-- @endforeach --}}
                     </div>
                   </div>

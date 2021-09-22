@@ -23,7 +23,7 @@
           <input type="tel" placeholder="phone number" name="phone_number">
           <input type="password" placeholder="Password" name="password">
           <input type="password" placeholder="repeat Password" id="password_confirmation" name="password_confirmation">
-
+          <a href="{{ route('auth.login')}}">login</a>
 
 
           <button class="register" type="submit">Register</button>

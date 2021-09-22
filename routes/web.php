@@ -48,5 +48,9 @@ Route::resource('post', PostController::class);
 Route::post('follow',[FollowController::class, 'follow'])
 ->name('follow.make');
 
+Route::delete('follow',[FollowController::class, 'unfollow'])
+->name('follow.delete');
+
 });
+
 

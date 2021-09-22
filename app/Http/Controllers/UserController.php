@@ -77,11 +77,11 @@ class UserController extends Controller
 
         // $lastid = DB::table('images')->lastinserid();
         // $lastid = Image::latest()->first()->id; //use last image id for making the name of image unique
-        $name = $request->file('file')->getClientOriginalName();  // get the name of picture from user device
-        $path = $request->file('file')->storeAs('public/images',$name); // store in images folder in public
+        // $name = $request->file('file')->getClientOriginalName();
+        $path = $request->file('file')->store('public/images'); // store in images folder in public
         $image = Image::create([
-            'title' => $name,
-            'path' => "storage/images/$name",
+            'title' => $user->name,
+            'path' => $path,
             'imageable_id' => $user->id,
             'imageable_type' =>'app\models\user'
         ]);

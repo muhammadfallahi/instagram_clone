@@ -13,4 +13,16 @@
         
         </form><br>
     @endforeach
+
+    @foreach ($users as $user)
+        {{$user->name}}  <form action="{{ route('follow.delete') }}" method="POST"> 
+            @method('DELETE')
+            @csrf
+
+            <button type="submit" class="btn-primary">unfollow</button>
+            <input type="hidden" value="{{$user->id}}" name="following">
+
+        
+        </form><br>
+    @endforeach
 @endsection

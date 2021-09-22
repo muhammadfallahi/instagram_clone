@@ -7,7 +7,8 @@
 <link rel="stylesheet" href={{ asset('css/paginate.css') }}>
     
   <div class="col-4">
-    <h1 class="text-center">posts</h1>
+    <h1 class="text-center">posts</h1><br>
+    <h4>count of posts: {{$user->posts->count()}} </h4>
     @foreach($user->posts as $post)
     <div class="card-deck">
         <div class="card mt-5" style="position: inherit">
@@ -15,8 +16,11 @@
             <div id="easyPaginate{{$post->id}}">
 
                 @foreach ($post->images as $image)
-           
-                <img class="card-img-top" src="{{ asset($image->path) }}" width="367px" height="367px"/>
+              @php
+              $path = $image->path ;
+              $newpath = str_replace("public", "storage", "$path");
+              @endphp
+                <img class="card-img-top" src="{{ asset($newpath) }}" width="367px" height="367px"/>
                 @endforeach
                 {{-- <img class="card-img-top" src="{{ asset('images/post.png') }}" />
                 <img class="card-img-top" src="{{ asset('images/post.png') }}" />
@@ -30,7 +34,15 @@
             <p class="card-text">{{$post->content}}</p>
           </div>
           <div class="card-footer">
-            <small class="text-muted">{{$post->created_at}}</small>
+            <small class="text-muted">
+              <h4>comments</h4>
+
+              @foreach ($post->comments as $comment)
+           
+              {{$comment->description}}
+              @endforeach
+
+            </small>
           </div>
         </div>
       </div>
