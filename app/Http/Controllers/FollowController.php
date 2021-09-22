@@ -15,8 +15,12 @@ class FollowController extends Controller
     //     'follow' => $request->following
     //    ]);
 
-    $user = Auth::user();
-    $user->follow()->sync($request->following);
+    // $user = Auth::user();
+    // $user->follows()->sync($request->following);
+    DB::table('follow')->insert([
+        'user_id' => Auth::user()->id,
+        'follow' => $request->following
+    ]);
        return back();
     }
 
