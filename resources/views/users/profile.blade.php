@@ -44,18 +44,30 @@
     <hr class="mt-3">
   <div class="col-4">
     <h1 class="text-center">posts</h1><br>
-    <h4>count of posts: {{$user->posts->count()}} </h4>
     @foreach($user->posts as $post)
     <div class="card-deck">
         <div class="card mt-5" style="position: inherit">
             <div id="easyPaginate{{$post->id}}">
+              
                 @foreach ($post->images as $image)
+                <div>
               @php
               $path = $image->path ;
               $newpath = str_replace("public", "storage", "$path");
+
+              $extension = pathinfo(storage_path($newpath), PATHINFO_EXTENSION);
+
               @endphp
-                <img class="card-img-top" src="{{ asset($newpath) }}" width="367px" height="367px"/>
+             @if ($extension == 'png')
+             <img class="card-img-top" src="{{ asset($newpath) }}" width="367px" height="367px"/>
+             @else
+              <video class="card-img-top" controls width="367" height="367">
+                 <source src="{{ asset($newpath) }}" type="video/mp4">
+              </video>
+             @endif
+            </div>
                 @endforeach
+            
             </div>
           <div class="card-body">
             <h5 class="card-title">{{$post->title}}</h5>
@@ -79,17 +91,7 @@
     <div class="col-4">
     <h1 class="text-center"> tagged posts</h1>
         
-        {{$user->name}} <br>
-        {{$user->id}}  <br>
-    {{-- count of user posts  --}}
-        count of posts: {{$user->posts->count()}}   <br> 
-        @foreach ($user->posts as $post)
-        @foreach ($post->images as $image)
       
-        {{$image->title}}
-        @endforeach
-           
-        @endforeach
     </div>
 
     <div class="col-4">

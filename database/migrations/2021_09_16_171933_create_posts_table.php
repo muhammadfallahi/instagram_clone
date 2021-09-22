@@ -17,7 +17,7 @@ class CreatePostsTable extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('content');
+            $table->longText('content');
             $table->foreignIdFor(App\Models\User::class);
             $table->boolean('allow_comment')->default(true);
             $table->softDeletes();

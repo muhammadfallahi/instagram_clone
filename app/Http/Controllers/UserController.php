@@ -78,13 +78,16 @@ class UserController extends Controller
         // $lastid = DB::table('images')->lastinserid();
         // $lastid = Image::latest()->first()->id; //use last image id for making the name of image unique
         // $name = $request->file('file')->getClientOriginalName();
+        if($request->has('file')){
         $path = $request->file('file')->store('public/images'); // store in images folder in public
+    
         $image = Image::create([
             'title' => $user->name,
             'path' => $path,
             'imageable_id' => $user->id,
             'imageable_type' =>'app\models\user'
         ]);
+    }
 
         $newrequest = $request->validated();
         if(!$request->password)
