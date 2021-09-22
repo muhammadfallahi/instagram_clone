@@ -25,7 +25,7 @@ class FollowController extends Controller
     }
 
     public function unfollow(Request $request){
-        //    dd($request->following);
+    
            DB::table('follow')->where([
                'user_id' =>Auth::user()->id,
                'follow' =>$request->following

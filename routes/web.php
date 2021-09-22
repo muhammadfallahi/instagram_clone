@@ -18,11 +18,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// })->name('home');
-
-
 
 Route::get('/',[AuthController::class, 'showLogin'])
 ->name('auth.showLogin');
@@ -42,7 +37,8 @@ Route::post('register',[AuthController::class, 'register'])
 
 Route::middleware('auth')->group(function(){
 
-    Route::post('logout', [AuthController::class, 'logout'])
+
+Route::post('logout', [AuthController::class, 'logout'])
 ->name('auth.logout');
 
 Route::resource('user', UserController::class);

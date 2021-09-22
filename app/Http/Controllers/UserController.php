@@ -75,9 +75,7 @@ class UserController extends Controller
     public function update(UpdateRequest $request, User $user)
     {
 
-        // $lastid = DB::table('images')->lastinserid();
-        // $lastid = Image::latest()->first()->id; //use last image id for making the name of image unique
-        // $name = $request->file('file')->getClientOriginalName();
+        
         if($request->has('file')){
         $path = $request->file('file')->store('public/images'); // store in images folder in public
     

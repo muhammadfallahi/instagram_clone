@@ -131,11 +131,3 @@
   
 
 
-{{-- 
-<video controls
-    width="250"
-    height="200"
-    >
-    <source src="{{ asset('images/a.mp4') }}"
-            type="video/mp4">
-</video> --}}
