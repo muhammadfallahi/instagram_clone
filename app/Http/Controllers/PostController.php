@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use App\Http\Requests\PostRequest;
 use App\Models\Image;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
@@ -41,6 +44,11 @@ class PostController extends Controller
         
         $newrequest =$request->validated();
 
+
+       
+        
+
+
         if (!array_key_exists('allow_comment',$newrequest)) {  //if allow_comment checkbox is not check allow_comment key dosen't exist
             $newrequest['allow_comment'] = false;
         }
@@ -52,7 +60,7 @@ class PostController extends Controller
             'allow_comment' =>$newrequest['allow_comment']
         ]);
 
-
+         
 
         $files = $request->file('file-data');
         foreach ($files as $file) {
@@ -65,6 +73,25 @@ class PostController extends Controller
                 'imageable_type' =>'app\models\post'
             ]);
         }
+
+         //use this for mention the user in posts
+
+         if (Str::contains($newrequest['content'], '@')) {   
+            preg_match_all('/(?<=\@)\w+/', $newrequest['content'], $matches);
+            foreach ($matches[0] as $match) {
+                if (Str::contains(User::all(), $match)) {
+                   $user = User::where('username', "$match")->get();
+                   
+                    DB::table('mention')->insert([
+                        'user_id' => $user[0]->id,
+                        'post_id' => $post->id
+                    ]);
+                }
+            }
+    
+        }
+
+       
 
         return redirect()->route('user.index')->with('message','post created successfully');
     

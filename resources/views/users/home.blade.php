@@ -3,7 +3,7 @@
 @section('content')
     <h1>welcome to instagram_clone home page</h1>
     @foreach ($users as $user)
-        {{$user->name}}  <form action="{{ route('follow.make') }}" method="POST"> 
+        {{$user->username}}  <form action="{{ route('follow.make') }}" method="POST"> 
             
             @csrf
 
@@ -15,7 +15,7 @@
     @endforeach
 
     @foreach ($users as $user)
-        {{$user->name}}  <form action="{{ route('block.make') }}" method="POST"> 
+        {{$user->username}}  <form action="{{ route('block.make') }}" method="POST"> 
             
             @csrf
 
@@ -27,7 +27,7 @@
     @endforeach
 
     @foreach ($users as $user)
-    {{$user->name}}  <form action="{{ route('block.delete') }}" method="POST"> 
+    {{$user->username}}  <form action="{{ route('block.delete') }}" method="POST"> 
         @method('DELETE')
         @csrf
 
@@ -39,7 +39,7 @@
 @endforeach
 
     @foreach ($users as $user)
-        {{$user->name}}  <form action="{{ route('follow.delete') }}" method="POST"> 
+        {{$user->username}}  <form action="{{ route('follow.delete') }}" method="POST"> 
             @method('DELETE')
             @csrf
 
