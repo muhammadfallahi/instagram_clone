@@ -4,8 +4,10 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlockController;
 use App\Http\Controllers\FollowController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\SaveController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use Whoops\Run;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +37,8 @@ Route::get('register',[AuthController::class, 'showRegister'])
 Route::post('register',[AuthController::class, 'register'])
 ->name('auth.register');
 
+
+
 Route::middleware('auth')->group(function(){
 
 
@@ -56,6 +60,12 @@ Route::post('block',[BlockController::class, 'block'])
 
 Route::delete('block',[BlockController::class, 'unblock'])
 ->name('block.delete');
+
+Route::post('post/{id}', [SaveController::class, 'save'])
+->name('save.post');
+
+// Route::post('post/{id}', [SaveController::class, 'unsave'])
+// ->name('unsave.post');
 
 });
 

@@ -57,13 +57,14 @@
                                     $extension = pathinfo(storage_path($newpath), PATHINFO_EXTENSION);
                                     
                                 @endphp
-                                @if ($extension == 'png')
-                                    <img class="card-img-top" src="{{ asset($newpath) }}" width="367px"
-                                        height="367px" />
-                                @else
+                                @if ($extension == 'mp4')
                                     <video class="card-img-top" controls width="367" height="367">
                                         <source src="{{ asset($newpath) }}" type="video/mp4">
                                     </video>
+
+                                @else
+                                    <img class="card-img-top" src="{{ asset($newpath) }}" width="367px"
+                                        height="367px" />
                                 @endif
                             </div>
                         @endforeach
@@ -115,19 +116,25 @@
                                         $extension = pathinfo(storage_path($newpath), PATHINFO_EXTENSION);
                                     @endphp
 
-                                    @if ($extension == 'png')
-                                        <img class="card-img-top" src="{{ asset($newpath) }}" width="367px"
-                                            height="367px" />
-                                    @else
+                                    @if ($extension == 'mp4')
                                         <video class="card-img-top" controls width="367" height="367">
                                             <source src="{{ asset($newpath) }}" type="video/mp4">
                                         </video>
+
+                                    @else
+                                        <img class="card-img-top" src="{{ asset($newpath) }}" width="367px"
+                                            height="367px" />
                                     @endif
                                 </div>
                             @endforeach
 
                         </div>
                         <div class="card-body">
+                            <form class="justify-content-end" method="post" action="{{ route('save.post',[$post->id]) }}">
+                                @csrf
+                                <button type="submit" class="btn btn-outline-light; pointer-events: none;" style="width:1px">
+                                  <img src="{{ asset('images/save.png') }}" class="icon" width="30px" alt="">
+                                </button></form>
                             <h5 class="card-title">{{ $post->title }}</h5>
                             <p class="card-text">{{ $post->content }}</p>
                         </div>
