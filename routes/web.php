@@ -21,6 +21,7 @@ use Whoops\Run;
 */
 
 
+
 Route::get('/',[AuthController::class, 'showLogin'])
 ->name('auth.showLogin');
 

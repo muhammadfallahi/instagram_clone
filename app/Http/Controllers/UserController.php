@@ -63,7 +63,10 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('users.edit',compact('user'));
+        if (Auth::user() == $user) {
+            return view('users.edit',compact('user'));
+        }
+        return back()->with('alert', 'your not login with this user id');
     }
 
     /**

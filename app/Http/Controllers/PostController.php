@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\PostRequest;
 use App\Models\Image;
 use App\Models\Post;
+use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -43,10 +44,6 @@ class PostController extends Controller
     {
         
         $newrequest =$request->validated();
-
-
-       
-        
 
 
         if (!array_key_exists('allow_comment',$newrequest)) {  //if allow_comment checkbox is not check allow_comment key dosen't exist
@@ -88,8 +85,21 @@ class PostController extends Controller
                     ]);
                 }
             }
-    
         }
+
+         //use this for make tags
+
+
+        if (Str::contains($newrequest['content'], '#')) {   
+            preg_match_all('/(?<=\#)\w+/', $newrequest['content'], $matches);
+            foreach ($matches[0] as $match) {
+                    Tag::create([
+                        'title' => $match,
+                        'post_id' => $post->id,
+                    ]);
+                }
+            }
+        
 
        
 

@@ -75,7 +75,7 @@ class User extends Authenticatable
     // }
 
     //  public function following(){
-    //     return $this->belongsTo(User::class, 'follow','user_id');
+    //     return $this->hasMany(User::class, 'follow','user_id');
     // }
 
     public function blocks(){
