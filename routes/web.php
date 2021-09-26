@@ -62,11 +62,11 @@ Route::post('block',[BlockController::class, 'block'])
 Route::delete('block',[BlockController::class, 'unblock'])
 ->name('block.delete');
 
-Route::post('post/{id}', [SaveController::class, 'save'])
+Route::post('save/{id}', [SaveController::class, 'save'])
 ->name('save.post');
 
-// Route::post('post/{id}', [SaveController::class, 'unsave'])
-// ->name('unsave.post');
+Route::delete('save/{id}', [SaveController::class, 'unsave'])
+->name('unsave.post');
 
 });
 

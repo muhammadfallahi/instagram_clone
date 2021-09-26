@@ -14,9 +14,8 @@ class CreateSaveTable extends Migration
     public function up()
     {
         Schema::create('save', function (Blueprint $table) {
-            $table->foreignIdFor(\App\Models\User::class);
-            $table->foreignIdFor(\App\Models\Post::class);
-            
+            $table->foreignId('user_id')->references('id')->on('users')->cascadeOnDelete();
+            $table->foreignId('post_id')->references('id')->on('posts')->cascadeOnDelete();
         });
     }
 

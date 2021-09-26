@@ -32,5 +32,9 @@ class Post extends Model
 
         return $this->morphMany(Image::class, 'imageable');
     }
+
+    public function savedBy() {
+        return $this->belongsToMany(User::class, 'save');
+    }
 }
 

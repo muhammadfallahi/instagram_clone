@@ -71,6 +71,8 @@
 
                     </div>
                     <div class="card-body">
+                        <x-save_button postid="{{ $post->id }}" />
+
                         <h5 class="card-title">{{ $post->title }}</h5>
                         <p class="card-text">{{ $post->content }}</p>
                     </div>
@@ -130,11 +132,9 @@
 
                         </div>
                         <div class="card-body">
-                            <form class="justify-content-end" method="post" action="{{ route('save.post',[$post->id]) }}">
-                                @csrf
-                                <button type="submit" class="btn btn-outline-light; pointer-events: none;" style="width:1px">
-                                  <img src="{{ asset('images/save.png') }}" class="icon" width="30px" alt="">
-                                </button></form>
+
+                            <x-save_button postid="{{ $post->id }}" />
+
                             <h5 class="card-title">{{ $post->title }}</h5>
                             <p class="card-text">{{ $post->content }}</p>
                         </div>
