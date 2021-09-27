@@ -1,7 +1,7 @@
 <div class="card-deck">
     <div class="card-deck">
         <div class="card mt-5" style="position: inherit">
-            <div id="easyPaginate{{$post->id}}">
+            <div id="easyPaginate{{ $post->id }}">
 
                 @foreach ($post->images as $image)
                     <div>
@@ -42,5 +42,3 @@
         </div>
     </div>
 </div>
-
-
