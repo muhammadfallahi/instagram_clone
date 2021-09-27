@@ -28,12 +28,13 @@
                     </div>
                     <div class="col-2">
                         <div>
-                            <h4>{{ DB::table('follow')->where('follow', "$user->id")->count() }} followers</h4>
+                            <h4>{{ $user->following->count() }} followers</h4>
+            
                         </div>
                     </div>
                     <div class="col-2">
                         <div>
-                            <h4>{{ $user->follows->count() }} following</h4>
+                            <h4>{{ $user->follower->count() }} following</h4>
                         </div>
                     </div>
                 </div>
@@ -44,7 +45,9 @@
     <div class="col-4">
         <h1 class="text-center">posts</h1><br>
         @foreach ($user->posts as $post)
-            <div class="card-deck">
+        <x-show_post :post="$post" />
+
+            {{-- <div class="card-deck">
                 <div class="card mt-5" style="position: inherit">
                     <div id="easyPaginate{{ $post->id }}">
 
@@ -87,25 +90,17 @@
                         </small>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         @endforeach
     </div>
 
     <div class="col-4">
         <h1 class="text-center"> tagged posts</h1><br>
 
-        @php
-            $mentions = DB::table('mention')
-                ->where('user_id', "$user->id")
-                ->get();
-        @endphp
+        @foreach ($user->mentions as $post)
+        <x-show_post :post="$post" />
 
-        @foreach ($mentions as $mention)
-            @php
-                $post = App\Models\post::find($mention->post_id);
-            @endphp
-
-            <div class="card-deck">
+            {{-- <div class="card-deck">
                 <div class="card-deck">
                     <div class="card mt-5" style="position: inherit">
                         <div id="easyPaginate{{ $post->id }}">
@@ -150,13 +145,63 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         @endforeach
     </div>
-
+    
     <div class="col-4">
-        <h1 class="text-center">saved posts</h1>
+        <h1 class="text-center">saved posts</h1><br>
 
+        @foreach ($user->saves as $post)
+        <x-show_post :post="$post" />
+
+            {{-- <div class="card-deck">
+                <div class="card-deck">
+                    <div class="card mt-5" style="position: inherit">
+                        <div id="easyPaginate{{ $post->id }}">
+
+                            @foreach ($post->images as $image)
+                                <div>
+                                    @php
+                                        $path = $image->path;
+                                        $newpath = str_replace('public', 'storage', "$path");
+                                        $extension = pathinfo(storage_path($newpath), PATHINFO_EXTENSION);
+                                    @endphp
+
+                                    @if ($extension == 'mp4')
+                                        <video class="card-img-top" controls width="367" height="367">
+                                            <source src="{{ asset($newpath) }}" type="video/mp4">
+                                        </video>
+
+                                    @else
+                                        <img class="card-img-top" src="{{ asset($newpath) }}" width="367px"
+                                            height="367px" />
+                                    @endif
+                                </div>
+                            @endforeach
+
+                        </div>
+                        <div class="card-body">
+
+                            <x-save_button postid="{{ $post->id }}" />
+
+                            <h5 class="card-title">{{ $post->title }}</h5>
+                            <p class="card-text">{{ $post->content }}</p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">
+                                <h4>comments</h4>
+                                @foreach ($post->comments as $comment)
+                                    <strong>{{ $comment->user->username }}</strong><br>
+                                    {{ $comment->description }} <br>
+                                @endforeach
+
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div> --}}
+        @endforeach
     </div>
 
 
