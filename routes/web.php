@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlockController;
+use App\Http\Controllers\ExploreController;
 use App\Http\Controllers\FollowController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\PostController;
@@ -74,6 +75,9 @@ Route::post('like/{id}/{type}', [LikeController::class, 'like'])
 
 Route::delete('save/{id}/{type}', [LikeController::class, 'delike'])
 ->name('delike.post');
+
+Route::get('explore',[ExploreController::class, 'index'])
+->name('explore.index');
 
 });
 
