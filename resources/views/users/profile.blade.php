@@ -42,12 +42,12 @@
         </div>
     </div>
     <hr class="mt-3">
-    <div class="col-4">
-        <h1 class="text-center">posts</h1><br>
-        @foreach ($user->posts as $post)
+    <h1 class="text-center">posts</h1><br>
+    @foreach ($user->posts as $post)
+        <div class="col-4">
             <x-show_post :post="$post" />
-        @endforeach
-    </div>
+        </div>
+    @endforeach
 
     <div class="col-4">
         <h1 class="text-center"> tagged posts</h1><br>

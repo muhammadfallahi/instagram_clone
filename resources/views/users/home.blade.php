@@ -1,8 +1,13 @@
 @extends('layouts.main')
 @section('title', 'home')
 @section('content')
+
+
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<link rel="stylesheet" href={{ asset('css/paginate.css') }}>
+
     <h1>welcome to instagram_clone home page</h1>
-    @foreach ($users as $user)
+    {{-- @foreach ($users as $user)
         {{$user->username}}  <form action="{{ route('follow.make') }}" method="POST"> 
             
             @csrf
@@ -48,5 +53,21 @@
 
         
         </form><br>
+    @endforeach --}}
+
+    @foreach ($user->following as $followed)
+    <div class="col-4">
+
+        @foreach ($followed->posts as $post)
+    
+
+            <x-show_post :post="$post" />
     @endforeach
+</div>
+
+    @endforeach
+
+
+    <script src="{{ asset('js/jquery.easyPaginate.js') }}"></script>
+    <script src="{{ asset('js/paginate.js') }}"></script>
 @endsection

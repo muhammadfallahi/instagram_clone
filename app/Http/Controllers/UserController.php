@@ -19,8 +19,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all()->except(Auth::id());
-        return view('users.home',compact('users'));
+        // $users = User::all()->except(Auth::id());
+        $user = Auth::user();
+        return view('users.home',compact('user'));
     }
 
     /**

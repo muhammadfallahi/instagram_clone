@@ -67,12 +67,12 @@ class User extends Authenticatable
     }
 
 
-    public function following(){
-        return $this->belongsToMany(User::class, 'follow','follow', 'user_id');
+    public function follower(){
+        return $this->belongsToMany(user::class, 'follow','follow', 'user_id');
     }
 
-     public function follower(){
-        return $this->belongsToMany(User::class, 'follow','user_id','follow');
+     public function following(){
+        return $this->belongsToMany(user::class, 'follow','user_id','follow');
     }
 
     public function blocks(){
@@ -80,7 +80,7 @@ class User extends Authenticatable
     }
 
     public function mentions(){
-        return $this->belongsToMany(post::class, 'mention','post_id', 'user_id');
+        return $this->belongsToMany(Post::class, 'mention','post_id', 'user_id');
     }
 
 
