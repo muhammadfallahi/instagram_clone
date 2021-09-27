@@ -54,18 +54,18 @@
         
         </form><br>
     @endforeach --}}
+    <div class="col-4">
 
     @foreach ($user->following as $followed)
-    <div class="col-4">
 
         @foreach ($followed->posts as $post)
     
 
             <x-show_post :post="$post" />
     @endforeach
-</div>
 
     @endforeach
+</div>
 
 
     <script src="{{ asset('js/jquery.easyPaginate.js') }}"></script>

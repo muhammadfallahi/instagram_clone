@@ -36,5 +36,10 @@ class Post extends Model
     public function savedBy() {
         return $this->belongsToMany(User::class, 'save');
     }
+
+    public function likes(){
+
+        return $this->morphToMany(post::class, 'likeable','like','user_id','post_id');
+    }
 }
 

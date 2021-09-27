@@ -30,6 +30,8 @@
         <div class="card-body">
 
             <x-save_button postid="{{ $post->id }}" />
+            <x-like_button id="{{ $post->id }}" type="Post" />
+
 
             <h5 class="card-title">{{ $post->title }}</h5>
             <p class="card-text">{{ $post->content }}</p>

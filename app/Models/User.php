@@ -87,4 +87,9 @@ class User extends Authenticatable
     public function saves() {
         return $this->belongsToMany(Post::class, 'save');
     }
+
+    public function likes(){
+
+        return $this->morphToMany(post::class, 'likeable','like','post_id','user_id');
+    }
 }

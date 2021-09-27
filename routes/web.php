@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlockController;
 use App\Http\Controllers\FollowController;
+use App\Http\Controllers\LikeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\SaveController;
 use App\Http\Controllers\UserController;
@@ -67,6 +68,12 @@ Route::post('save/{id}', [SaveController::class, 'save'])
 
 Route::delete('save/{id}', [SaveController::class, 'unsave'])
 ->name('unsave.post');
+
+Route::post('like/{id}/{type}', [LikeController::class, 'like'])
+->name('like.post');
+
+Route::delete('save/{id}/{type}', [LikeController::class, 'delike'])
+->name('delike.post');
 
 });
 
