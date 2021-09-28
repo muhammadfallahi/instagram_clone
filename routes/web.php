@@ -7,6 +7,7 @@ use App\Http\Controllers\FollowController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\SaveController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Whoops\Run;
@@ -78,6 +79,10 @@ Route::delete('save/{id}/{type}', [LikeController::class, 'delike'])
 
 Route::get('explore',[ExploreController::class, 'index'])
 ->name('explore.index');
+
+
+Route::post('search', [SearchController::class, 'search'])
+->name('search.this');
 
 });
 
