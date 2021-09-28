@@ -39,7 +39,7 @@ class Post extends Model
 
     public function likes(){
 
-        return $this->morphToMany(post::class, 'likeable','like','user_id','post_id');
+        return $this->morphToMany(Post::class, 'likeable', 'like', 'user_id', 'likeable_id');
     }
 }
 

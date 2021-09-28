@@ -16,5 +16,5 @@
     </form>
 @endif
 
-
+{{DB::table('like')->where(['likeable_type' => 'post', 'likeable_id' => $id])->count()}}
 </div>
