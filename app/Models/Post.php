@@ -23,9 +23,23 @@ class Post extends Model
         return $this->hasMany(Comment::class);
     }
 
+
+    public function tags(){
+        return $this->hasMany(Tag::class);
+    }
+
     public function images(){
 
         return $this->morphMany(Image::class, 'imageable');
+    }
+
+    public function savedBy() {
+        return $this->belongsToMany(User::class, 'save');
+    }
+
+    public function likes(){
+
+        return $this->morphToMany(Post::class, 'likeable', 'like', 'user_id', 'likeable_id');
     }
 }
 

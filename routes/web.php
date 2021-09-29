@@ -2,10 +2,15 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlockController;
+use App\Http\Controllers\ExploreController;
 use App\Http\Controllers\FollowController;
+use App\Http\Controllers\LikeController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\SaveController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use Whoops\Run;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +22,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 
 
 Route::get('/',[AuthController::class, 'showLogin'])
@@ -34,6 +40,8 @@ Route::get('register',[AuthController::class, 'showRegister'])
 
 Route::post('register',[AuthController::class, 'register'])
 ->name('auth.register');
+
+
 
 Route::middleware('auth')->group(function(){
 
@@ -56,6 +64,25 @@ Route::post('block',[BlockController::class, 'block'])
 
 Route::delete('block',[BlockController::class, 'unblock'])
 ->name('block.delete');
+
+Route::post('save/{id}', [SaveController::class, 'save'])
+->name('save.post');
+
+Route::delete('save/{id}', [SaveController::class, 'unsave'])
+->name('unsave.post');
+
+Route::post('like/{id}/{type}', [LikeController::class, 'like'])
+->name('like.post');
+
+Route::delete('save/{id}/{type}', [LikeController::class, 'delike'])
+->name('delike.post');
+
+Route::get('explore',[ExploreController::class, 'index'])
+->name('explore.index');
+
+
+Route::post('search', [SearchController::class, 'search'])
+->name('search.this');
 
 });
 

@@ -64,3 +64,24 @@ $('#easyPaginate8').easyPaginate({
     elementsPerPage: 1,
     effect: 'climb',
 });
+
+
+$('#easyPaginate9').easyPaginate({
+    paginateElement: 'div',
+    elementsPerPage: 1,
+    effect: 'climb',
+});
+
+
+$('#easyPaginate10').easyPaginate({
+    paginateElement: 'div',
+    elementsPerPage: 1,
+    effect: 'climb',
+});
+
+
+$('#easyPaginate11').easyPaginate({
+    paginateElement: 'div',
+    elementsPerPage: 1,
+    effect: 'climb',
+});

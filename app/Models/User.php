@@ -66,11 +66,30 @@ class User extends Authenticatable
         return $this->hasMany(Comment::class);
     }
 
-    public function follows(){
-        return $this->belongsToMany(User::class, 'follow','user_id','follow');
+
+    public function follower(){
+        return $this->belongsToMany(user::class, 'follow','follow', 'user_id');
+    }
+
+     public function following(){
+        return $this->belongsToMany(user::class, 'follow','user_id','follow');
     }
 
     public function blocks(){
         return $this->belongsToMany(User::class, 'block','user_id','block');
+    }
+
+    public function mentions(){
+        return $this->belongsToMany(Post::class, 'mention','post_id', 'user_id');
+    }
+
+
+    public function saves() {
+        return $this->belongsToMany(Post::class, 'save');
+    }
+
+    public function likes(){
+
+        return $this->morphToMany(post::class, 'likeable','like','post_id','user_id');
     }
 }

@@ -7,6 +7,7 @@ use App\Models\Image;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
@@ -18,8 +19,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-        return view('users.home',compact('users'));
+        // $users = User::all()->except(Auth::id());
+        $user = Auth::user();
+        return view('users.home',compact('user'));
     }
 
     /**
@@ -62,7 +64,10 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('users.edit',compact('user'));
+        if (Auth::user() == $user) {
+            return view('users.edit',compact('user'));
+        }
+        return back()->with('alert', 'your not login with this user id');
     }
 
     /**
