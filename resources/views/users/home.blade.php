@@ -3,8 +3,8 @@
 @section('content')
 
 
-<script src="http://code.jquery.com/jquery-latest.js"></script>
-<link rel="stylesheet" href={{ asset('css/paginate.css') }}>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <link rel="stylesheet" href={{ asset('css/paginate.css') }}>
 
     <h1>welcome to instagram_clone home page</h1>
     {{-- @foreach ($users as $user)
@@ -54,18 +54,22 @@
         
         </form><br>
     @endforeach --}}
+    {{-- <x-follow_button /> --}}
+
     <div class="col-4">
 
-    @foreach ($user->following as $followed)
+        @foreach ($user->following as $followed)
 
-        @foreach ($followed->posts as $post)
-    
+            @foreach ($followed->posts as $post)
 
-            <x-show_post :post="$post" />
-    @endforeach
+                <x-unfollow_button id="{{$post->user->id}}" />
+                    <x-block_button id="{{$post->user->id}}" />
+                        <x-unblock_button id="{{$post->user->id}}" />
+                <x-show_post :post="$post" />
+            @endforeach
 
-    @endforeach
-</div>
+        @endforeach
+    </div>
 
 
     <script src="{{ asset('js/jquery.easyPaginate.js') }}"></script>
