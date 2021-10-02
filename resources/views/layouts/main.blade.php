@@ -17,7 +17,7 @@
         <a href="{{ route('user.index') }}">
           <img src="{{ asset('images/instagram_clone.png') }}" class="brand-img" alt="">
         </a>
-          <input type="text" class="search-box" id="inputsearch" name="search" placeholder="search">
+          <input type="text" class="search-box mb-3" id="inputsearch" name="search" placeholder="search">
           <div class="mt-5 col-1"><br><ul id="searchresult" class="mt-5 bg-white" style="display: none; list-style-type: none; width:200px"></ul></div>
           <div class="nav-items">
             <a href="{{ route('user.index') }}"><img src="{{ asset('images/home.png') }}" class="icon" alt=""></a>

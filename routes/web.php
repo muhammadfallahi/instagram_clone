@@ -82,7 +82,12 @@ Route::get('explore',[ExploreController::class, 'index'])
 
 
 Route::post('search', [SearchController::class, 'search'])
-->name('search.this');
+->name('search.users');
+
+
+Route::post('searchtags', [SearchController::class, 'searchtags'])
+->name('search.tags');
+
 
 });
 

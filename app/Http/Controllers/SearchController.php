@@ -15,4 +15,15 @@ class SearchController extends Controller
         ->get();
         echo $keyResult;
     }
+
+    public function searchtags(Request $request)
+    {
+        $inputsearch = $request['inputsearch'];
+        
+            $inputsearch = ltrim($inputsearch, "#");
+            $keyResult = DB::table('tags')
+            ->where('title', 'like', '%' .$inputsearch. '%')
+            ->get();
+            echo $keyResult;
+    }
 }

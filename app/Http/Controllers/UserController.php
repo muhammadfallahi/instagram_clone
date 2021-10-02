@@ -53,7 +53,11 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        return view('users.profile',compact('user'));
+        $follower = [];
+        foreach ($user->follower as $follow) {
+            array_push($follower,$follow->id);
+        }
+        return view('users.profile',compact('user','follower'));
     }
 
     /**
