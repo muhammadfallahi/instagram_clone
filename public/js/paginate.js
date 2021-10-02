@@ -97,3 +97,15 @@ $('#easyPaginate13').easyPaginate({
     elementsPerPage: 1,
     effect: 'climb',
 });
+
+$('#easyPaginate14').easyPaginate({
+    paginateElement: 'div',
+    elementsPerPage: 1,
+    effect: 'climb',
+});
+
+$('#easyPaginate15').easyPaginate({
+    paginateElement: 'div',
+    elementsPerPage: 1,
+    effect: 'climb',
+});

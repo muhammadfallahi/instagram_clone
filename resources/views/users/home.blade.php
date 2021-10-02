@@ -6,7 +6,7 @@
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <link rel="stylesheet" href={{ asset('css/paginate.css') }}>
 
-    <h1>welcome to instagram_clone home page</h1>
+    {{-- <h1>welcome to instagram_clone home page</h1> --}}
     {{-- @foreach ($users as $user)
         {{$user->username}}  <form action="{{ route('follow.make') }}" method="POST"> 
             
@@ -61,10 +61,10 @@
         @foreach ($user->following as $followed)
 
             @foreach ($followed->posts as $post)
-
+{{-- 
                 <x-unfollow_button id="{{$post->user->id}}" />
                     <x-block_button id="{{$post->user->id}}" />
-                        <x-unblock_button id="{{$post->user->id}}" />
+                        <x-unblock_button id="{{$post->user->id}}" /> --}}
                 <x-show_post :post="$post" />
             @endforeach
 

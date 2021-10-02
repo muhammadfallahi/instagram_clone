@@ -5,6 +5,7 @@ use App\Http\Controllers\BlockController;
 use App\Http\Controllers\ExploreController;
 use App\Http\Controllers\FollowController;
 use App\Http\Controllers\LikeController;
+use App\Http\Controllers\MentionController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\SaveController;
 use App\Http\Controllers\SearchController;
@@ -68,6 +69,9 @@ Route::delete('block',[BlockController::class, 'unblock'])
 Route::post('save/{id}', [SaveController::class, 'save'])
 ->name('save.post');
 
+Route::get('save', [SaveController::class, 'index'])
+->name('save.index');
+
 Route::delete('save/{id}', [SaveController::class, 'unsave'])
 ->name('unsave.post');
 
@@ -85,8 +89,11 @@ Route::post('search', [SearchController::class, 'search'])
 ->name('search.users');
 
 
-Route::post('searchtags', [SearchController::class, 'searchtags'])
+Route::post('searchtags', [SearchController::class, 'searchTags'])
 ->name('search.tags');
+
+Route::get('mention', [MentionController::class, 'index'])
+->name('mention.index');
 
 
 });
