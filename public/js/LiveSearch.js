@@ -30,7 +30,7 @@ $('#inputsearch').on('keyup', function(){
                 for(let i=0;i<data.length;i++){
                     // searchResultAjax +='<a href=http://instagram_clone.test/user/'+data[i].id+'><li>'+data[i].username+'</li></a>'
                     // searchResultAjax +='<a href="{{ route("user.show", ['+data[i].id+']) }}"><li>'+data[i].username+'</li></a>'
-                    searchResultAjax +='<a href="#" id="searching"><li id="txtsearch">'+data[i].username+'</li></a>'
+                    searchResultAjax +='<a href=user/'+data[i].id+' id="searching"><li id="txtsearch">'+data[i].username+'</li></a>'
                 }
                 $('#searchresult').html(searchResultAjax);
             }

@@ -28,14 +28,23 @@
                     </div>
                     <div class="col-2">
                         <div>
-                            <h4>{{ $user->following->count() }} followers</h4>
+                            <h4>{{ $user->follower->count() }} followers</h4>
 
                         </div>
                     </div>
                     <div class="col-2">
                         <div>
-                            <h4>{{ $user->follower->count() }} following</h4>
+                            <h4>{{ $user->following->count() }} following</h4>
                         </div>
+                        {{-- use for follow and unfollow button --}}
+                        @if (Auth::user()->id !== $user->id) 
+                        @if (in_array(Auth::user()->id, $follower))
+                        <x-unfollow_button id="{{$user->id}}" />
+                        @else
+                        <x-follow_button id="{{$user->id}}" />
+                        @endif
+                        @endif
+                        {{-- ---------------------------------- --}}
                     </div>
                 </div>
             </div>

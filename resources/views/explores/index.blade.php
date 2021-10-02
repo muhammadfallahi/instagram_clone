@@ -7,7 +7,6 @@
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <link rel="stylesheet" href={{ asset('css/paginate.css') }}>
 
-    <div>This is explore page</div>
 
     @foreach ($mostlike as $post)
         <div class="col-4">
