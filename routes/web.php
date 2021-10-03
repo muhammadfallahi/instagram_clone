@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlockController;
+use App\Http\Controllers\DirectController;
 use App\Http\Controllers\ExploreController;
 use App\Http\Controllers\FollowController;
 use App\Http\Controllers\LikeController;
@@ -94,6 +95,9 @@ Route::post('searchtags', [SearchController::class, 'searchTags'])
 
 Route::get('mention', [MentionController::class, 'index'])
 ->name('mention.index');
+
+Route::get('direct', [DirectController::class, 'index'])
+->name('direct.index');
 
 
 });

@@ -12,7 +12,7 @@ class SaveController extends Controller
 
     public function index()
     {
-        $posts = Auth::user()->saves;    //used for show user saved message in profile
+        $posts = auth()->user()->saves()->Paginate(3);    //used for show user saved message in profile
         return back()
         ->with('act3', 'active')
         ->with('posts', $posts);

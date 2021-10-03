@@ -66,13 +66,13 @@
         </li>
       </ul>
 
-    {{-- <h1 class="text-center">posts</h1><br> --}}
     @if (session('posts'))
     @foreach (session('posts') as $post)
         <div class="col-4">
             <x-show_post :post="$post" />
         </div>
     @endforeach
+    {{ session('posts')->links() }}
     @endif
     
 
@@ -95,11 +95,5 @@
 
     <script src="{{ asset('js/jquery.easyPaginate.js') }}"></script>
     <script src="{{ asset('js/paginate.js') }}"></script>
-{{-- <script>
-    $( '#topheader a' ).on('click', 
-                function () {
-        $( '#topheader a' ).removeClass( 'nav-link active' );
-        $( this ).addClass( 'nav-link active' );
-    });
-</script> --}}
+
 @endsection

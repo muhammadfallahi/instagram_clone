@@ -22,7 +22,7 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::where('user_id', Auth::user()->id)
-        ->get();
+        ->paginate(3);
         return back()
         ->with('act1', 'active')
         ->with('posts', $posts);
