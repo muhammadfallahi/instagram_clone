@@ -21,6 +21,26 @@ class DirectController extends Controller
             'message' => $request->message
         ]);
 
-        return back();
+        // return redirect()
+        // ->route('direct.messages', ['id' => $request->receiver]);
+        return $this->messages($request->receiver);
+    }
+
+    public function messages($id){
+     
+        $messages = Direct::where(function($query) use($id)
+        {
+            $query->where("from_id", auth()->user()->id)
+            ->where("to_id", $id );
+        })
+        ->orwhere(function($query) use ($id)
+        {
+            $query->where("from_id", $id)
+            ->where("to_id", auth()->user()->id );
+        })->get();
+
+        return back()
+        ->with('allmessages', $messages)
+        ->with('id', $id);
     }
 }

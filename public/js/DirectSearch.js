@@ -27,7 +27,7 @@ $('#input_direct_search').on('keyup', function(){
                 console.log(data);
                 $('#search_direct_result').show();
                 for(let i=0;i<data.length;i++){
-                    searchResultAjax +='<li id="txt_direct_search">'+data[i].username+'</li>'
+                    searchResultAjax +='<a href="direct/'+data[i].id+'" id="searching"><li id="txt_direct_search">'+data[i].username+'</li></a>'
                     // searchResultAjax +='<li class="person" data-chat="person1"><div class="user"><img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin"> <span class="status busy"></span></div><p class="name-time"><span class="name">'+data[i].username+'</span> <span class="time">15/02/2019</span></p></li>'
                 }
                 $('#search_direct_result').html(searchResultAjax);

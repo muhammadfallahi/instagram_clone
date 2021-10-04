@@ -41,8 +41,12 @@
                                     <form action="{{ route('direct.saveChat') }}" method="post">
                                         @csrf
                                         <ul class="users">
+
+                                           
+
+                                            <a href="{{ route('direct.messages', ['id' => 2]) }}">
                                             <li class="person" data-chat="person1">
-                                                <input type="hidden" name="receiver" value="{{ '2' }}">
+                                                <input type="hidden" name="receiver" value=@if(session('id')) {{ session('id') }} @endif>
                                                 <div class="user">
                                                     <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png"
                                                         alt="Retail Admin">
@@ -53,6 +57,9 @@
                                                     <span class="time">15/02/2019</span>
                                                 </p>
                                             </li>
+                                            </a>    
+
+
                                             <li class="person" data-chat="person1">
                                                 <div class="user">
                                                     <img src="https://www.bootdey.com/img/Content/avatar/avatar1.png"
@@ -84,21 +91,16 @@
                                 </div>
                                 <div class="chat-container">
                                     <ul class="chat-box chatContainerScroll" id="scroll">
-                                        <li class="chat-left">
-                                            <div class="chat-avatar">
-                                                <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png"
-                                                    alt="Retail Admin">
-                                                <div class="chat-name">Russell</div>
-                                            </div>
-                                            <div class="chat-text">Hello, I'm Russell.
-                                                <br>How can I help you today?
-                                            </div>
-                                            <div class="chat-hour">08:55 <span class="fa fa-check-circle"></span></div>
-                                        </li>
+
+                                    <!-- -------show messages----------------- -->
+
+                                        @if (session('allmessages'))
+                                        @foreach (session('allmessages') as $message)
+                                        @if ($message->from_id == auth()->user()->id)
                                         <li class="chat-right">
                                             <div class="chat-hour">08:56 <span class="fa fa-check-circle"></span></div>
-                                            <div class="chat-text">Hi, Russell
-                                                <br> I need more information about Developer Plan.
+                                            <div class="chat-text">
+                                                  {{ $message->message }}
                                             </div>
                                             <div class="chat-avatar">
                                                 <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png"
@@ -106,28 +108,28 @@
                                                 <div class="chat-name">Sam</div>
                                             </div>
                                         </li>
+                                        @else
                                         <li class="chat-left">
                                             <div class="chat-avatar">
                                                 <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png"
                                                     alt="Retail Admin">
                                                 <div class="chat-name">Russell</div>
                                             </div>
-                                            <div class="chat-text">Are we meeting today?
-                                                <br>Project has been already finished and I have results to show you.
+                                            <div class="chat-text">
+                                                 {{ $message->message }}
+
                                             </div>
-                                            <div class="chat-hour">08:57 <span class="fa fa-check-circle"></span></div>
+                                            <div class="chat-hour">08:55 <span class="fa fa-check-circle"></span></div>
                                         </li>
-                                        <li class="chat-right">
-                                            <div class="chat-hour">08:59 <span class="fa fa-check-circle"></span></div>
-                                            <div class="chat-text">Well I am not sure.
-                                                <br>I have results to show you.
-                                            </div>
-                                            <div class="chat-avatar">
-                                                <img src="https://www.bootdey.com/img/Content/avatar/avatar5.png"
-                                                    alt="Retail Admin">
-                                                <div class="chat-name">Joyse</div>
-                                            </div>
-                                        </li>
+
+                                        @endif
+        
+                                        @endforeach
+                                        @endif
+
+                                    <!-- ---------------------------------------- -->
+
+                                       
                                     </ul>
                                     <div class="form-group mt-3 mb-0">
 

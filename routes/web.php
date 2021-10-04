@@ -102,6 +102,9 @@ Route::get('direct', [DirectController::class, 'index'])
 Route::post('direct', [DirectController::class, 'saveChat'])
 ->name('direct.saveChat');
 
+Route::get('direct/{id}', [DirectController::class, 'messages'])
+->name('direct.messages');
+
 
 });
 
