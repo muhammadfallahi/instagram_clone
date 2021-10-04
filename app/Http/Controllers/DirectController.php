@@ -8,6 +8,6 @@ class DirectController extends Controller
 {
     public function index()
     {
-        return view('direct.index');
+        return view('direct.chat');
     }
 }
