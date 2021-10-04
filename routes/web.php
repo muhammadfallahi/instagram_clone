@@ -99,6 +99,9 @@ Route::get('mention', [MentionController::class, 'index'])
 Route::get('direct', [DirectController::class, 'index'])
 ->name('direct.index');
 
+Route::post('direct', [DirectController::class, 'saveChat'])
+->name('direct.saveChat');
+
 
 });
 
