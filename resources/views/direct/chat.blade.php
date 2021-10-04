@@ -41,7 +41,7 @@
                                     <form action="{{ route('direct.saveChat') }}" method="post">
                                         @csrf
                                         <input type="hidden" name="receiver" value=@if(session('id')) {{ session('id') }} @endif>
-                                        <ul class="users" id="scroll">
+                                        <ul class="users" id="scrolluser">
 
                                            
 
@@ -160,6 +160,7 @@
     <script>
         $('#scroll').scrollTop($('#scroll')[0].scrollHeight);
     </script>
+
     <script type="text/javascript" src="{{ asset('js/DirectSearch.js') }}"></script>
 
 @endsection

@@ -24,7 +24,7 @@ class DirectRequest extends FormRequest
     public function rules()
     {
         return [
-            'to_id' => ['required'],
+            'receiver' => ['required'],
             'message' => ['required']
         ];
     }

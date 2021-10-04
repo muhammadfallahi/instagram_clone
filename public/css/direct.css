@@ -384,6 +384,14 @@
     height: 500px;
 }
 
+#scrolluser {
+    list-style-type: none;
+    margin: 0;
+    overflow-y: scroll;
+    padding: 0;
+    height: 500px;
+}
+
 
 .card {
     /* overflow-y: scroll; */
