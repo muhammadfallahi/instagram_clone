@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\DirectRequest;
 use App\Models\Direct;
 use Illuminate\Http\Request;
 
@@ -13,7 +14,7 @@ class DirectController extends Controller
         return view('direct.chat');
     }
 
-    public function saveChat(Request $request)
+    public function saveChat(DirectRequest $request)
     {
         Direct::create([
             'from_id' => $request->sender,

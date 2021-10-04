@@ -40,13 +40,13 @@
                                     <!-- ----------------- -->
                                     <form action="{{ route('direct.saveChat') }}" method="post">
                                         @csrf
-                                        <ul class="users">
+                                        <input type="hidden" name="receiver" value=@if(session('id')) {{ session('id') }} @endif>
+                                        <ul class="users" id="scroll">
 
                                            
 
                                             <a href="{{ route('direct.messages', ['id' => 2]) }}">
                                             <li class="person" data-chat="person1">
-                                                <input type="hidden" name="receiver" value=@if(session('id')) {{ session('id') }} @endif>
                                                 <div class="user">
                                                     <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png"
                                                         alt="Retail Admin">

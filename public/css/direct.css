@@ -376,7 +376,7 @@
     border-top: 1px solid white;
 }
 
-ul {
+#scroll {
     list-style-type: none;
     margin: 0;
     overflow-y: scroll;
