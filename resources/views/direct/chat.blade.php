@@ -44,6 +44,18 @@
                                         <input type="hidden" name="receiver" value=@if (session('receiver')) {{ session('receiver')->id }} @endif>
                                         <ul class="users" id="scrolluser">
                                     <!----------- make user accounts --------------------->
+                                    <a href="{{ route('direct.messages', ['id' => auth()->user()->id]) }}">
+                                        <li class="person" data-chat="person1">
+                                            <div class="user">
+                                                <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png"
+                                                    alt="Retail Admin">
+                                                <span class="status busy"></span>
+                                            </div>
+                                            <p class="name-time">
+                                                <span class="name">Saved</span>
+                                            </p>
+                                        </li>
+                                    </a>
                                             @foreach ($user_accounts as $user_account)
                                             <a href="{{ route('direct.messages', ['id' => $user_account->id]) }}">
                                                 <li class="person" data-chat="person1">

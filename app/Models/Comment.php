@@ -13,11 +13,13 @@ class Comment extends Model
         'description'
     ];
 
-    public function post(){
-        return $this->belongsTo(post::class);
-    }
 
     public function user(){
         return $this->belongsTo(user::class);
+    }
+
+    public function replies()
+    {
+        return $this->hasMany(Comment::class, 'parent_id');
     }
 }

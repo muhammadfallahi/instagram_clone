@@ -23,7 +23,7 @@ class DirectController extends Controller
        
 
         foreach ($directs as $direct) {
-            if (in_array($direct->from_id, $from)) {
+            if (in_array($direct->from_id, $from)|$direct->from_id == auth()->user()->id) {
                 continue;
             }else{
             array_push($from, $direct->from_id);
@@ -31,7 +31,7 @@ class DirectController extends Controller
         }
 
         foreach ($directs as $direct) {
-            if (in_array($direct->to_id, $to)) {
+            if (in_array($direct->to_id, $to)|$direct->to_id == auth()->user()->id) {
                 continue;
             }else{
             array_push($to, $direct->to_id);
@@ -77,7 +77,7 @@ class DirectController extends Controller
         return $this->messages($request->receiver);
     }
 
-    
+
 
 
     public function messages($id){

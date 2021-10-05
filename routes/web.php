@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlockController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DirectController;
 use App\Http\Controllers\ExploreController;
 use App\Http\Controllers\FollowController;
@@ -105,6 +106,12 @@ Route::post('direct', [DirectController::class, 'saveChat'])
 Route::get('direct/{id}', [DirectController::class, 'messages'])
 ->name('direct.messages');
 
+
+Route::post('/comment/store', [CommentController::class ,'store'])
+->name('comment.add');
+
+Route::post('/reply/store',[CommentController::class ,'replyStore'])
+->name('reply.add');
 
 });
 
