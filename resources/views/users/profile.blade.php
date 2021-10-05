@@ -40,6 +40,7 @@
                         @if (Auth::user()->id !== $user->id) 
                         @if (in_array(Auth::user()->id, $follower))
                         <x-unfollow_button id="{{$user->id}}" />
+                            <x-block_button id="{{$user->id}}" />
                         @else
                         <x-follow_button id="{{$user->id}}" />
                         @endif
