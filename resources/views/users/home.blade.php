@@ -56,7 +56,7 @@
     @endforeach --}}
     {{-- <x-follow_button /> --}}
 
-    <div class="col-4">
+    <div class="col-6">
 
         @foreach ($user->following as $followed)
 

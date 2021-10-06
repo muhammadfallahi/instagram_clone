@@ -7,9 +7,6 @@
 <div class="parent clearfix">
   <div class="bg-illustration">
 
-    <div class="burger-btn">
-    </div>
-
   </div>
   
   <div class="auth">
