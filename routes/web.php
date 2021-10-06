@@ -116,6 +116,10 @@ Route::post('/comment/store', [CommentController::class ,'store'])
 Route::post('/reply/store',[CommentController::class ,'replyStore'])
 ->name('reply.add');
 
+Route::get('create', function(){  //use for creating post or story
+    return view('create.create');
+})->name('create.create');
+
 });
 
 

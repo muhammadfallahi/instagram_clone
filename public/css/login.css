@@ -56,7 +56,7 @@
   }
   
   .bg-illustration {
-    /* position: relative; */
+    position: relative;
     height: 100vh;
     width: auto;
     background: url('../images/instagram.png') no-repeat center center scroll;
@@ -276,16 +276,16 @@
         opacity: 1;
       }
     }
-    /* .bg-illustration { */
-      /* float: none; */
-      /* background: url("https://i.ibb.co/rwncw7s/bg-mobile.png") center center; */
-      /* background-size: cover; */
-      /* -webkit-animation: slideIn 0.8s ease-in-out forwards; */
-              /* animation: slideIn 0.8s ease-in-out forwards; */
-      /* width: 100%; */
-      /* height: 190px; */
-      /* text-align: center; */
-    /* } */
+    .bg-illustration {
+      float: none;
+      background: url("https://i.ibb.co/rwncw7s/bg-mobile.png") center center;
+      background-size: cover;
+      -webkit-animation: slideIn 0.8s ease-in-out forwards;
+              animation: slideIn 0.8s ease-in-out forwards;
+      width: 100%;
+      height: 190px;
+      text-align: center;
+    }
     .bg-illustration img {
       width: 100px;
       height: auto;

@@ -1,5 +1,5 @@
 <div class="card-deck">
-    <div class="card mt-5" style="position: inherit">
+    <div class="card mt-5">
         <div class="p-3">
             <strong>{{ $post->user->username }}</strong>
             <hr>
@@ -55,4 +55,5 @@
                 </form>
         </div>
     </div>
+</div>
 </div>
