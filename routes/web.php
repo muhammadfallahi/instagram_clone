@@ -11,6 +11,7 @@ use App\Http\Controllers\MentionController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\SaveController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\StoryController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Whoops\Run;
@@ -55,6 +56,8 @@ Route::post('logout', [AuthController::class, 'logout'])
 Route::resource('user', UserController::class);
 
 Route::resource('post', PostController::class);
+
+Route::resource('story', StoryController::class);
 
 Route::post('follow',[FollowController::class, 'follow'])
 ->name('follow.make');

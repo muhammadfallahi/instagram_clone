@@ -18,7 +18,6 @@ class CreatePostsTable extends Migration
             $table->id();
             $table->string('title');
             $table->longText('content');
-            // $table->foreignIdFor(App\Models\User::class);
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->boolean('allow_comment')->default(true);
             $table->softDeletes();

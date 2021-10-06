@@ -73,6 +73,9 @@
                 <div class="tab-pane active">
                   <form class="form"  method="post" action="{{ route('post.store', [Auth::user()]) }}" enctype="multipart/form-data">
                     @csrf
+
+                    <form class="form"  method="post" action="{{ route('story.store', [Auth::user()]) }}" enctype="multipart/form-data">
+                    @csrf
                     <input type="file" style="" id="input-id" name="file-data[]" multiple>
                     <div class="row">
                       <div class="col">
@@ -110,6 +113,13 @@
                         </div>
                       </div>
                     </div>
+
+                    <div class="row">
+                      <div class="col d-flex justify-content-end">
+                        <button class="btn btn-primary" type="submit">Save as story</button>
+                      </div>
+                    </div>
+                  </form>
                     <div class="row">
                       <div class="col d-flex justify-content-end">
                         <button class="btn btn-primary" type="submit">Save Changes</button>

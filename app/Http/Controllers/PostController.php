@@ -65,7 +65,6 @@ class PostController extends Controller
 
         $files = $request->file('file-data');
         foreach ($files as $file) {
-            // $name = $file->getClientOriginalName();
             $path = $file->store('public/images');
             $image = Image::create([
                 'title' => $request->title,
