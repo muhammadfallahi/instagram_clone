@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateStoryRequest;
+use App\Models\Image;
 use App\Models\Story;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class StoryController extends Controller
 {
@@ -24,7 +27,9 @@ class StoryController extends Controller
      */
     public function create()
     {
-        //
+        
+        return back()
+        ->with('create_story_active', 'active');
     }
 
     /**
@@ -33,9 +38,31 @@ class StoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateStoryRequest $request)
     {
-        //
+        $newrequest =$request->validated();
+
+        $story = Story::create([
+            'user_id' =>Auth::user()->id,
+            'title' => $newrequest['title'],
+            'content' => $newrequest['content']
+        ]);
+
+
+        $files = $request->file('file-data');
+        foreach ($files as $file) {
+            $path = $file->store('public/images');
+            $image = Image::create([
+                'title' => $request->title,
+                'path' => $path,
+                'imageable_id' => $story->id,
+                'imageable_type' =>'app\models\story'
+            ]);
+        }
+
+        return redirect()->route('user.index')->with('message','story created successfully');
+
+        
     }
 
     /**

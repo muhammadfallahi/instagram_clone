@@ -2,12 +2,16 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlockController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\DirectController;
 use App\Http\Controllers\ExploreController;
 use App\Http\Controllers\FollowController;
 use App\Http\Controllers\LikeController;
+use App\Http\Controllers\MentionController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\SaveController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\StoryController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Whoops\Run;
@@ -53,6 +57,8 @@ Route::resource('user', UserController::class);
 
 Route::resource('post', PostController::class);
 
+Route::resource('story', StoryController::class);
+
 Route::post('follow',[FollowController::class, 'follow'])
 ->name('follow.make');
 
@@ -67,6 +73,9 @@ Route::delete('block',[BlockController::class, 'unblock'])
 
 Route::post('save/{id}', [SaveController::class, 'save'])
 ->name('save.post');
+
+Route::get('save', [SaveController::class, 'index'])
+->name('save.index');
 
 Route::delete('save/{id}', [SaveController::class, 'unsave'])
 ->name('unsave.post');
@@ -85,9 +94,31 @@ Route::post('search', [SearchController::class, 'search'])
 ->name('search.users');
 
 
-Route::post('searchtags', [SearchController::class, 'searchtags'])
+Route::post('searchtags', [SearchController::class, 'searchTags'])
 ->name('search.tags');
 
+Route::get('mention', [MentionController::class, 'index'])
+->name('mention.index');
+
+Route::get('direct', [DirectController::class, 'index'])
+->name('direct.index');
+
+Route::post('direct', [DirectController::class, 'saveChat'])
+->name('direct.saveChat');
+
+Route::get('direct/{id}', [DirectController::class, 'messages'])
+->name('direct.messages');
+
+
+Route::post('/comment/store', [CommentController::class ,'store'])
+->name('comment.add');
+
+Route::post('/reply/store',[CommentController::class ,'replyStore'])
+->name('reply.add');
+
+Route::get('create', function(){  //use for creating post or story
+    return view('create.create');
+})->name('create.create');
 
 });
 

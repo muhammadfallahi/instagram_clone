@@ -2,12 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class SaveController extends Controller
 {
+
+    public function index()
+    {
+        $posts = auth()->user()->saves()->Paginate(3);    //used for show user saved message in profile
+        return back()
+        ->with('act3', 'active')
+        ->with('posts', $posts);
+    }
+
+
+
     public function save($id)
     {
         DB::table('save')->insert([

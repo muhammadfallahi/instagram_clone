@@ -16,7 +16,7 @@ class SearchController extends Controller
         echo $keyResult;
     }
 
-    public function searchtags(Request $request)
+    public function searchTags(Request $request)
     {
         $inputsearch = $request['inputsearch'];
         

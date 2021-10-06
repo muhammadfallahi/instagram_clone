@@ -21,7 +21,11 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $posts = Post::where('user_id', Auth::user()->id)
+        ->paginate(3);
+        return back()
+        ->with('act1', 'active')
+        ->with('posts', $posts);
     }
 
     /**
@@ -31,7 +35,9 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('posts.create');
+        
+        return back()
+        ->with('create_post_active', 'active');
     }
 
     /**
@@ -61,7 +67,6 @@ class PostController extends Controller
 
         $files = $request->file('file-data');
         foreach ($files as $file) {
-            // $name = $file->getClientOriginalName();
             $path = $file->store('public/images');
             $image = Image::create([
                 'title' => $request->title,

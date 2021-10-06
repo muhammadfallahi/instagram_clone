@@ -59,8 +59,8 @@
     position: relative;
     height: 100vh;
     width: auto;
-    background: url("https://www.freecodecamp.org/news/content/images/2020/12/instagramclone.png") no-repeat center center scroll;
-    /* background-size: cover; */
+    background: url('../images/instagram.png') no-repeat center center scroll;
+    background-size: cover;
     float: left;
     -webkit-animation: bgslide 2.3s forwards;
             animation: bgslide 2.3s forwards;
@@ -120,7 +120,7 @@
     font-weight: bolder;
   }
   .auth .container .auth-form {
-    /* margin-top: 112px; */
+    margin-top: 50px;
   }
   .auth .container .auth-form form {
     display: -ms-grid;

@@ -64,10 +64,6 @@ class User extends Authenticatable
         return $this->morphMany(Image::class, 'imageable');
     }
 
-    public function comments(){
-        return $this->hasMany(Comment::class);
-    }
-
 
     public function follower(){
         return $this->belongsToMany(user::class, 'follow','follow', 'user_id');

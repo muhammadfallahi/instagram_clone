@@ -1,5 +1,5 @@
 <div class="card-deck">
-    <div class="card mt-5" style="position: inherit">
+    <div class="card mt-5">
         <div class="p-3">
             <strong>{{ $post->user->username }}</strong>
             <hr>
@@ -39,11 +39,21 @@
         <div class="card-footer">
             <small class="text-muted">
                 <h4>comments</h4>
-                @foreach ($post->comments as $comment)
-                    <strong>{{ $comment->user->username }}</strong><br>
-                    {{ $comment->description }} <br>
-                @endforeach
+
+                @include('comments.comment', ['comments' => $post->comments, 'post_id' => $post->id])
+               
             </small>
+            <div class="card-body">
+                <form method="post" action="{{ route('comment.add') }}">
+                    @csrf
+
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" name="comment" placeholder="Leave comment...">
+                        <input type="hidden" name="post_id" value="{{ $post->id }}" />
+                        <button class="btn btn-info" type="submit">send</button>
+                    </div>
+                </form>
         </div>
     </div>
+</div>
 </div>
