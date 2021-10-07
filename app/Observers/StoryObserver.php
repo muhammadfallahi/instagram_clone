@@ -10,7 +10,7 @@ class StoryObserver
 {
     public function created(Story $story)
     {
-        dispatch(new StoryDeleter($story))->delay(now()->addSeconds(10));
+        dispatch(new StoryDeleter($story))->delay(now()->addDay());
     }
 }
  
