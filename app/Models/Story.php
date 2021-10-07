@@ -26,5 +26,10 @@ class Story extends Model
 
         return $this->morphMany(Image::class, 'imageable');
     }
+
+    public function archives(){
+
+        return $this->morphMany(Archive::class, 'archiveable');
+    }
 }
 
