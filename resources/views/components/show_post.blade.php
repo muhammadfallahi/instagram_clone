@@ -1,8 +1,8 @@
 <div class="card-deck">
-    <div class="card mt-5">
+    <div class="card mt-5" style="position: inherit !important">
         <div class="p-3">
             <strong>{{ $post->user->username }}</strong>
-            <hr>
+            
 
         </div>
         <div id="easyPaginate{{ $post->id }}">
