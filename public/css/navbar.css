@@ -32,7 +32,8 @@ body{
 
 .nav-wrapper{
     width: 70%;
-    max-width: 1000px;
+    margin-left: 150px;
+    max-width: 1500px;
     height: 100%;
     display: flex;
     justify-content: space-between;

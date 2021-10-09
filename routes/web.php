@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlockController;
 use App\Http\Controllers\CommentController;
@@ -119,6 +120,9 @@ Route::post('/reply/store',[CommentController::class ,'replyStore'])
 Route::get('create', function(){  //use for creating post or story
     return view('create.create');
 })->name('create.create');
+
+Route::get('activity',[ActivityController::class, 'index'])
+->name('user.activity');
 
 });
 

@@ -26,6 +26,7 @@
             <a href="{{ route('direct.index') }}"><img src="{{ asset('images/direct.png') }}" class="icon" alt=""></a>
             <a href="{{ route('create.create') }}"><img src="{{ asset('images/post.png') }}" class="icon" alt=""></a>
             <a href="{{ route('explore.index') }}"><img src="{{ asset('images/explore.png') }}" class="icon" alt=""></a>
+            <a href="{{ route('user.activity') }}"><img src="{{ asset('images/alarm.png') }}" class="icon" alt=""></a>
             <a href=""><form style="display:inherit" method="post" action="{{ route('auth.logout') }}">
               @csrf
               <button type="submit" class="btn btn-outline-light; pointer-events: none;" style="width:1px">
