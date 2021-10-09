@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CommentRequest;
 use App\Models\Comment;
 use App\Models\Post;
 use Illuminate\Http\Request;
@@ -9,7 +10,7 @@ use Illuminate\Http\Request;
 class CommentController extends Controller
 {
  
-    public function store(Request $request)
+    public function store(CommentRequest $request)
     {
         $comment = new Comment;
 
@@ -26,7 +27,7 @@ class CommentController extends Controller
 
 
 
-    public function replyStore(Request $request)
+    public function replyStore(CommentRequest $request)
     {
         $reply = new Comment();
 
