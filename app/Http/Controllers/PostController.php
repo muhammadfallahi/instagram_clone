@@ -81,14 +81,16 @@ class PostController extends Controller
          if (Str::contains($newrequest['content'], '@')) {   
             preg_match_all('/(?<=\@)\w+/', $newrequest['content'], $matches);
             foreach ($matches[0] as $match) {
-                if (Str::contains(User::all(), $match)) {
-                   $user = User::where('username', "$match")->get();
-                   
-                    DB::table('mention')->insert([
-                        'user_id' => $user[0]->id,
-                        'post_id' => $post->id
-                    ]);
+                $users = user::all();
+                foreach ($users as $user) {
+                    if ($user->username == $match) {
+                        DB::table('mention')->insert([
+                            'user_id' => $user->id,
+                            'post_id' => $post->id
+                        ]);
+                    }
                 }
+
             }
         }
 

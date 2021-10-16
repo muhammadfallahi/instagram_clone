@@ -82,7 +82,7 @@ class User extends Authenticatable
     }
 
     public function mentions(){
-        return $this->belongsToMany(Post::class, 'mention','post_id', 'user_id');
+        return $this->belongsToMany(Post::class, 'mention','user_id', 'post_id');
     }
 
 
