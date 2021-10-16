@@ -117,13 +117,18 @@ Route::post('/comment/store', [CommentController::class ,'store'])
 Route::post('/reply/store',[CommentController::class ,'replyStore'])
 ->name('reply.add');
 
-Route::get('create', function(){  //use for creating post or story
-    return view('create.create');
-})->name('create.create');
+// Route::get('create', function(){  //use for creating post or story
+//     return view('create.create');
+// })->name('create.create');
+
+Route::view('create','create.create')     //use for creating post or story
+->name('create.create');
 
 Route::get('activity',[ActivityController::class, 'index'])
 ->name('user.activity');
 
-});
+Route::post('activity/{commentnotification}',[ActivityController::class, 'show'])
+->name('show.activity');
 
+});
 
